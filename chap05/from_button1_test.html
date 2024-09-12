@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+
+<html lang="ko">
+    <head>
+        <title>웹 폼</title>
+        <style>
+        body{
+            background-color: #fff;
+        }
+        form fieldset{
+            margin-bottom: 25px;
+        }
+        form legend{
+            font-size: 15px;
+            font-weight: 600;
+        }
+        form label.reg{
+            font-size: 14px;
+            color: #390;
+            font-weight: bold;
+            width: 110px;
+            float: left;
+            text-align: right;
+            margin-right: 10px;
+        }
+        form ul li{
+            list-style: none;
+            margin: 15px 0;
+            font-size: 14px;
+        }
+        #member , #stuffs{
+            width: 50px;
+        }
+        #pre{
+            margin-left: 15px;
+        }
+        fieldset#sending{
+            text-align: center;
+        }
+
+        </style>
+    </head>
+    <body>
+        <form>
+            <br><br>
+            <filedset>
+                <legend>수강생 정보</legend>
+                <ul>
+                    <li>
+                        <label>
+                            이름:<input type="text" id="st_name">
+                        </label>
+                    </li>
+                    <li>
+                        <label>
+                            등록번호:<input type="text" id="st_num">
+                        </label>
+                    </li>
+                    <li>
+                        <label>
+                            연락처:<input type="tel" id="st_tel">
+                        </label>
+                    </li>
+                </ul>
+            </filedset>
+            <fieldset id="register">
+                <legend>
+                    수강 과목을 선택하세요 <small>(1과목 선택 가능)</small>
+                </legend>
+                <ul>
+                    <li>
+                        신청과목<small>(회화)</small>
+                        <label>
+                            <input type="radio" name="spk" value="low" checked="">영어 회화(초급)
+                        </label>
+                        <label>
+                            <input type="radio" name="spk" value="middle" checked="">영어 회화(중급)
+                        </label>
+                        <label>
+                            <input type="radio" name="spk" value="high" checked="">영어 회화(고급)
+                        </label>
+                    </li>
+                    <li>
+                        신청 과목<small>(자격)</small>
+                        <label>
+                            <input type="radio" name="cert" value="toeic">TOEIC
+                        </label>
+                        <label>
+                            <input type="radio" name="cert" value="toefl">TOEFL
+                        </label>
+                        <label>
+                            <input type="radio" name="cert" value="opic">OPIC
+                        </label>
+                    </li>
+                </ul>
+            </fieldset>
+            <fieldset>
+                <legend>
+                    관심분야는? <small>(다수 선택 가능)</small>
+                </legend>
+                <ul>
+                    <li>
+                        <label>
+                            <input type="radio" name="pre" value="grammer">문법
+                        </label>
+                        <label>
+                            <input type="radio" name="pre" value="voca">어휘
+                        </label>
+                        <lable>
+                            <input type="radio" name="pre" value="grammer">회화
+                        </lable>
+                        <label>
+                            <input type="radio" name="pre" value="listening">리스닝
+                        </label>
+                        <lable>
+                            <input type="radio" name="pre" value="news">뉴스 청취
+                        </lable>
+                        <label>
+                            <input type="radio" name="pre" value="reading">독해
+                        </label>
+                    </li>
+                </ul>
+            </fieldset>
+            <fieldset id="sending">
+                <label><input type="submit" value="등록하기"></label>
+                <label><input type="submit" value="다시쓰기"></label>
+            </fieldset>
+        </form>
+    </body>
+</html>
