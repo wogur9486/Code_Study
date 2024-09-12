@@ -1,0 +1,75 @@
+참조키(외래 키, Foreign Key)
+	관계형 데이터베이스에서 두 테이블 간의 관계를 정의하는 데 사용
+	한 테이블의 열이 다른 테이블의 기본 키(또는 고유 키)를 참조하도록 함으로써, 데이터의 일관성과 무결성을 유지
+
+기본 키 (Primary Key):
+	한 테이블에서 각 행을 고유하게 식별하는 열 또는 열의 집합
+	기본 키는 반드시 고유한 값을 가져야 하며, NULL 값을 가질 수 없음
+
+참조키 (Foreign Key):
+	한 테이블의 열이 다른 테이블의 기본 키를 참조하는 키
+	참조키는 데이터 무결성을 보장. 즉, 참조된 값이 존재하지 않으면 해당 값을 삽입할 수 없음(가능하게 할 수는 있음)
+
+1. scores 테이블 정의하기
+
+CREATE TABLE scores (
+    score_id INT AUTO_INCREMENT PRIMARY KEY,
+    student_id INT NOT NULL,
+    subject_id INT NOT NULL,
+    score INT,
+    FOREIGN KEY (student_id) REFERENCES students(student_id),
+    FOREIGN KEY (subject_id) REFERENCES subjects(subject_id)
+);
+
+참조키
+
+2. 정의한 테이블을 대상으로 기본적인 CRUD쿼리 작성하기
+students에 삽입
+INSERT INTO students (student_name, birth, gender, intro)
+VALUES 
+('홍길동', '2000-05-10', '남', '안녕하세요, 홍길동입니다. 모험과 도전을 좋아합니다.'),
+('신사임당', '1999-12-15', '여', '안녕하세요, 신사임당입니다. 예술을 사랑합니다.'),
+('장보고', '1996-06-29', '남', '안녕하세요, 장보고입니다. 바다를 사랑합니다.'),
+('이순신', '1998-10-28', '남', '안녕하세요, 이순신입니다. 나라를 지켰습니다.');
+
+subjects에 삽입
+INSERT INTO subjects (subject_name)
+VALUES 
+('수학'),
+('과학'),
+('영어');
+
+데이터 삽입 (Create)
+INSERT INTO scores (student_id, subject_id, score) VALUES (1, 1, 85);
+INSERT INTO scores (student_id, subject_id, score) VALUES (1, 2, 90);
+INSERT INTO scores (student_id, subject_id, score) VALUES (2, 1, 95);
+
+데이터 조회 (Read)
+-- 모든 점수 조회
+SELECT * FROM scores;
+
+-- 특정 점수 조회 (score_id로 조회)
+SELECT * FROM scores WHERE score_id = 1;
+
+-- 특정 학생의 모든 점수 조회 (student_id로 조회)
+SELECT * FROM scores WHERE student_id = 1;
+
+-- 특정 과목의 모든 점수 조회 (subject_id로 조회)
+SELECT * FROM scores WHERE subject_id = 1;
+
+데이터 업데이트 (Update)
+-- 특정 점수 수정 (score_id로 수정)
+UPDATE scores SET score = 95 WHERE score_id = 1;
+
+-- 특정 학생의 특정 과목 점수 수정 (student_id와 subject_id로 수정)
+UPDATE scores SET score = 98 WHERE student_id = 1 AND subject_id = 2;
+
+데이터 삭제 (Delete)
+-- 특정 점수 삭제 (score_id로 삭제)
+DELETE FROM scores WHERE score_id = 1;
+
+-- 특정 학생의 모든 점수 삭제 (student_id로 삭제)
+DELETE FROM scores WHERE student_id = 2;
+
+-- 특정 과목의 모든 점수 삭제 (subject_id로 삭제)
+DELETE FROM scores WHERE subject_id = 1;

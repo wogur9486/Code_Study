@@ -1,0 +1,36 @@
+1. subjects 테이블 정의하기
+CREATE TABLE subjects (
+    subject_id INT AUTO_INCREMENT PRIMARY KEY,
+    subject_name VARCHAR(100) NOT NULL
+);
+
+2. 정의한 테이블을 대상으로 기본적인 CRUD쿼리 작성하기
+
+데이터 삽입 (Create)
+INSERT INTO subjects (subject_name) VALUES ('수학');
+INSERT INTO subjects (subject_name) VALUES ('과학');
+INSERT INTO subjects (subject_name) VALUES ('영어');
+
+데이터 조회 (Read)
+-- 모든 과목 조회
+SELECT * FROM subjects;
+
+-- 특정 과목 조회 (과목 ID로 조회)
+SELECT * FROM subjects WHERE subject_id = 1;
+
+-- 특정 과목 조회 (과목 이름으로 조회)
+SELECT * FROM subjects WHERE subject_name = '수학';
+
+데이터 업데이트 (Update)
+-- 특정 과목 이름 수정 (과목 ID로 수정)
+UPDATE subjects SET subject_name = '물리' WHERE subject_id = 1;
+
+-- 특정 과목 이름 수정 (과목 이름으로 수정)
+UPDATE subjects SET subject_name = '화학' WHERE subject_name = '과학';
+
+데이터 삭제 (Delete)
+-- 특정 과목 삭제 (과목 ID로 삭제)
+DELETE FROM subjects WHERE subject_id = 3;
+
+-- 특정 과목 삭제 (과목 이름으로 삭제)
+DELETE FROM subjects WHERE subject_name = '영어';

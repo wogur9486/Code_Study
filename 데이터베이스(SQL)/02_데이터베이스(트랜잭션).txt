@@ -1,0 +1,27 @@
+-- 예시 시나리오 - 학생 정보 업데이트를 트랜잭션으로 처리
+	-- students 테이블에 새로운 학생을 추가
+	-- 특정 학생의 자기소개를 업데이트
+	-- 조건에 따라 변경 사항을 저장(COMMIT)하거나 취소(ROLLBACK)
+
+DELETE FROM students;
+
+-- 1. 트랜잭션 시작
+START TRANSACTION;
+
+-- 데이터 삽입 및 업데이트
+INSERT INTO students (student_name, birth, gender, intro)
+VALUES ('홍길동', '2003-08-15', '남', '안녕하세요, 김철수입니다.');
+
+UPDATE students
+SET intro = '안녕하세요, 홍길동입니다. 모험과 도전을 좋아합니다.'
+WHERE student_name = '홍길동';
+
+-- 변경 사항 확인 (옵션)
+SELECT * FROM students;
+
+-- 조건에 따라 커밋 또는 롤백(변경 사항을 저장하거나 취소)
+-- 모든 변경 사항 저장 (커밋)
+COMMIT;
+
+-- 모든 변경 사항 취소 (롤백)
+--ROLLBACK;

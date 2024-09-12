@@ -1,0 +1,7 @@
+1. subjects 테이블 정의하기
+
+컬럼 이름		데이터 타입			널 허용			설명
+subject_id		INT AUTO_INCREMENT		NOT NULL		과목의 고유 식별자
+subject_name		VARCHAR(100)			NOT NULL		과목의 이름
+
+2. 정의한 테이블을 대상으로 기본적인 CRUD쿼리 작성하기
